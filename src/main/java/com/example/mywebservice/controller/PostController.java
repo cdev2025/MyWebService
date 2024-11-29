@@ -7,10 +7,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,8 +43,31 @@ public class PostController {
     }
     
     // 게시글 상세 보기
+    @GetMapping("/{id}")
+    public String detail(@PathVariable Long id, Model model){
+        PostResponse response = postService.getPostById(id).orElseThrow(() -> new RuntimeException("Post not found"));
+        model.addAttribute("post", response);
+        return "detail";
+    }
     
     // 게시글 수정하기
+    @GetMapping("/{id}/edit")
+    public String editPost(@PathVariable Long id, Model model){
+        PostResponse response = postService.getPostById(id).orElseThrow(() -> new RuntimeException("Post not found"));
+        model.addAttribute("post", response);
+        return "edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String editPost(@PathVariable Long id, @ModelAttribute PostRequest request){
+        postService.updatePost(id, request);
+        return "redirect:/posts";
+    }
     
     // 게시글 삭제하기
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable Long id){
+        postService.deletePost(id);
+        return "redirect:/posts";  // 게시글 리스트로이동
+    }
 }

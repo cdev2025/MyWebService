@@ -1,4 +1,4 @@
-package com.example.mywebservice.entity;
+package com.example.mywebservice.post.db;
 
 import jakarta.persistence.*;
 import lombok.*;

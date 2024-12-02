@@ -1,9 +1,9 @@
-package com.example.mywebservice.service;
+package com.example.mywebservice.post.service;
 
-import com.example.mywebservice.controller.model.PostRequest;
-import com.example.mywebservice.controller.model.PostResponse;
-import com.example.mywebservice.entity.PostEntity;
-import com.example.mywebservice.entity.PostRepository;
+import com.example.mywebservice.post.controller.model.PostRequest;
+import com.example.mywebservice.post.controller.model.PostResponse;
+import com.example.mywebservice.post.db.PostEntity;
+import com.example.mywebservice.post.db.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

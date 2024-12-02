@@ -1,4 +1,4 @@
-package com.example.mywebservice.controller.model;
+package com.example.mywebservice.post.controller.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostRequest {
+public class PostResponse {
+    private Long id;
     private String title;
     private String content;
     private String author;
